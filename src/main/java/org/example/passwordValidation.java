@@ -62,7 +62,10 @@ public class passwordValidation {
     // method to check if the password is commonly used: pwIs_commonlyUsed
 
     public static Boolean pwIs_commonlyUsed(String password) {
-        if (password == null) return false;
+        if (password == null || password.isEmpty()) return true;
+        String lowerPassword = password.toLowerCase();
+        String upperPassword = password.toUpperCase();
+
         String[] weakPasswords = {
                 // General Weak Passwords
                 "123456", "password", "123456789", "12345678", "12345",
@@ -70,7 +73,7 @@ public class passwordValidation {
 
                 // Variations of "Password" with numbers and symbols
                 "Password", "Password1", "Passw0rd", "P@ssword", "P@ssw0rd",
-                "password123", "Password123", "Pass1234", "Passw0rd123",
+                "password123", "Password123", "Pass1234", "Passw@rd123",
 
                 // Simple Numeric Patterns
                 "111111", "222222", "333333", "444444", "555555", "666666",
@@ -104,7 +107,13 @@ public class passwordValidation {
                 "01011990", "12345678", "01012000"
         };
         for (String weakPW : weakPasswords) {
-            if (password == weakPW) {
+            if (password.equals(weakPW)) {
+                return true;
+            }
+            if (upperPassword.equals(weakPW)) {
+                return true;
+            }
+            if (lowerPassword.equals(weakPW)) {
                 return true;
             }
         }

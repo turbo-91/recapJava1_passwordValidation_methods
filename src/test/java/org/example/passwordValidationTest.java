@@ -246,6 +246,17 @@ class passwordValidationTest {
     }
 
     @Test
+    void symbolsOnly_shouldReturnFalse(){
+        // GIVEN
+        String password = "/(!$)§!§/&";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void nullUpperLower_shouldReturnFalse(){
         // GIVEN
         String password = null;
@@ -271,7 +282,7 @@ class passwordValidationTest {
     }
 
     @Test
-    void weakPassword_shouldReturnTrue(){
+    void weakPasswordDigits_shouldReturnTrue(){
         // GIVEN
         String password = "666666";
         // WHE
@@ -282,13 +293,35 @@ class passwordValidationTest {
     }
 
     @Test
-    void nullCommonlyUsed_shouldReturnFalse(){
+    void weakPasswordMix_shouldReturnTrue(){
+        // GIVEN
+        String password = "Passw0rd";
+        // WHE
+        Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void weakPasswordUppercase_shouldReturnTrue(){
+        // GIVEN
+        String password = "PASSWORD";
+        // WHE
+        Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void nullCommonlyUsed_shouldReturnTrue(){
         // GIVEN
         String password = null;
         // WHE
         Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
         // THEN
-        Boolean expected = false;
+        Boolean expected = true;
         Assertions.assertEquals(expected, actual);
     }
 
