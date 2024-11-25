@@ -13,7 +13,6 @@ public class passwordValidation {
     };
 
 
-
     // method to check if the password contains digits: pwContains_digits
     public static Boolean pwContains_digits(String password) {
         String[] digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -23,14 +22,52 @@ public class passwordValidation {
             }
         }
         return false;}
+
+    // method to check if the password contains digits: pwContains_lowerCaseUpperCase
+    public static Boolean pwContains_LowerCaseUpperCase(String password) {
+
+        String[] uppercaseLetters = new String[26];
+        for (int i = 0; i < 26; i++) {
+            uppercaseLetters[i] = String.valueOf((char) ('A' + i));
+        }
+
+        String[] lowercaseLetters = new String[26];
+        for (int i = 0; i < 26; i++) {
+            lowercaseLetters[i] = String.valueOf((char) ('a' + i));
+        }
+
+        Boolean upperBoolean = false;
+        Boolean lowerBoolean = false;
+
+        for (String character : uppercaseLetters) {
+            if (password.contains(character)) {
+               upperBoolean = true;
+            }
+        }
+        for (String character : lowercaseLetters) {
+            if (password.contains(character)) {
+                lowerBoolean = true;
+            }
+        }
+
+        if (upperBoolean && lowerBoolean) {
+            return true;
+        }
+        else return false;
+
     };
 
-
-    // method to check if the password contains lowerCase AND upperCase letters: pwContains_lowerCaseUpperCase
-
-
-
     // method to check if the password is commonly used: pwIs_commonlyUsed
+}
+
+
+
+
+
+
+
+
+
 
 
 
