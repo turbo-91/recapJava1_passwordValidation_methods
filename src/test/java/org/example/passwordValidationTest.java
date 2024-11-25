@@ -16,7 +16,7 @@ class passwordValidationTest {
 //        PlayerCharacter.y =0;
 //    }
 
-
+// Tests for pwLength_min8
 
     @Test
     void abcdefghj_shouldReturnTrue(){
@@ -43,7 +43,7 @@ class passwordValidationTest {
     }
 
     @Test
-    void abc_shouldReturnTrue(){
+    void abc_shouldReturnFalse(){
         // GIVEN
         String password = "abc";
         // WHE
@@ -54,10 +54,11 @@ class passwordValidationTest {
 
     }
 
+
     @Test
-    void signs_shouldReturnTrue(){
+    void eightSymbols_shouldReturnTrue(){
         // GIVEN
-        String password = "abcd§\"&$( efgh !";
+        String password = "!§\"&$(?!";
         // WHE
         Boolean actual = passwordValidation.pwLength_min8(password);
         // THEN
@@ -66,8 +67,119 @@ class passwordValidationTest {
 
     }
 
+    @Test
+    void sevenSymbols_shouldReturnFalse(){
+        // GIVEN
+        String password = "§\"&$(?!";
+        // WHE
+        Boolean actual = passwordValidation.pwLength_min8(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void eightSpaces_shouldReturnTrue(){
+        // GIVEN
+        String password = "        ";
+        // WHE
+        Boolean actual = passwordValidation.pwLength_min8(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void sevenSpaces_shouldReturnFalse(){
+        // GIVEN
+        String password = "       ";
+        // WHE
+        Boolean actual = passwordValidation.pwLength_min8(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void empty_shouldReturnFalse(){
+        // GIVEN
+        String password = "";
+        // WHE
+        Boolean actual = passwordValidation.pwLength_min8(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    };
 
 
-    // password always to string (can contain ints etc?)
+
+// Tests for pwContains_digits
+
+    @Test
+    void one_shouldReturnTrue(){
+        // GIVEN
+        String password = "1";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    };
+
+    @Test
+    void a_shouldReturnFalse(){
+            // GIVEN
+            String password = "abc";
+            // WHE
+            Boolean actual = passwordValidation.pwContains_digits(password);
+            // THEN
+            Boolean expected = false;
+            Assertions.assertEquals(expected, actual);
+        }
+
+
+    @Test
+    void symbolsDigits_shouldReturnTrue(){
+        // GIVEN
+        String password = "!@#123";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    };
+
+
+    @Test
+    void symbols_shouldReturnFalse(){
+        // GIVEN
+        String password = "!@#(";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    };
+    
+
+    @Test
+    void spaceDigits_shouldReturnTrue(){
+        // GIVEN
+        String password = " 123";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    };
+
+
+
+// Test: password empty
+    // Test: password null
+
 
 }
