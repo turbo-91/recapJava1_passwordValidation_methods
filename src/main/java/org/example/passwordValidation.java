@@ -7,14 +7,16 @@ public class passwordValidation {
     // method to check the length of the password is at least 8 characters: pwLength_min8
 
     public static Boolean pwLength_min8(String password) {
+        if (password == null) return false;
         if (password.length() >= 8)
-        return true;
+            return true;
         else return false;
     };
 
 
     // method to check if the password contains digits: pwContains_digits
     public static Boolean pwContains_digits(String password) {
+        if (password == null) return false;
         String[] digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         for (String digit : digits) {
             if (password.contains(digit)) {
@@ -25,7 +27,7 @@ public class passwordValidation {
 
     // method to check if the password contains digits: pwContains_lowerCaseUpperCase
     public static Boolean pwContains_LowerCaseUpperCase(String password) {
-
+        if (password == null) return false;
         String[] uppercaseLetters = new String[26];
         for (int i = 0; i < 26; i++) {
             uppercaseLetters[i] = String.valueOf((char) ('A' + i));
@@ -41,7 +43,7 @@ public class passwordValidation {
 
         for (String character : uppercaseLetters) {
             if (password.contains(character)) {
-               upperBoolean = true;
+                upperBoolean = true;
             }
         }
         for (String character : lowercaseLetters) {
@@ -60,6 +62,10 @@ public class passwordValidation {
     // method to check if the password is commonly used: pwIs_commonlyUsed
 
     public static Boolean pwIs_commonlyUsed(String password) {
+        if (password == null || password.isEmpty()) return true;
+        String lowerPassword = password.toLowerCase();
+        String upperPassword = password.toUpperCase();
+
         String[] weakPasswords = {
                 // General Weak Passwords
                 "123456", "password", "123456789", "12345678", "12345",
@@ -67,7 +73,7 @@ public class passwordValidation {
 
                 // Variations of "Password" with numbers and symbols
                 "Password", "Password1", "Passw0rd", "P@ssword", "P@ssw0rd",
-                "password123", "Password123", "Pass1234", "Passw0rd123",
+                "password123", "Password123", "Pass1234", "Passw@rd123",
 
                 // Simple Numeric Patterns
                 "111111", "222222", "333333", "444444", "555555", "666666",
@@ -101,7 +107,13 @@ public class passwordValidation {
                 "01011990", "12345678", "01012000"
         };
         for (String weakPW : weakPasswords) {
-            if (password == weakPW) {
+            if (password.equals(weakPW)) {
+                return true;
+            }
+            if (upperPassword.equals(weakPW)) {
+                return true;
+            }
+            if (lowerPassword.equals(weakPW)) {
                 return true;
             }
         }
@@ -109,6 +121,7 @@ public class passwordValidation {
     };
 
 }
+
 
 
 
