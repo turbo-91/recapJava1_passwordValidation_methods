@@ -1,12 +1,11 @@
 package org.example;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class passwordValidationTest {
+
+// Tests for pwLength_min8
 
     @Test
     void abcdefghj_shouldReturnTrue(){
@@ -105,6 +104,17 @@ class passwordValidationTest {
     };
 
 
+    @Test
+    void nullLength_shouldReturnFalse(){
+        // GIVEN
+        String password = null;
+        // WHE
+        Boolean actual = passwordValidation.pwLength_min8(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    };
+
 
 // Tests for pwContains_digits
 
@@ -121,14 +131,14 @@ class passwordValidationTest {
 
     @Test
     void a_shouldReturnFalse(){
-            // GIVEN
-            String password = "a";
-            // WHE
-            Boolean actual = passwordValidation.pwContains_digits(password);
-            // THEN
-            Boolean expected = false;
-            Assertions.assertEquals(expected, actual);
-        }
+        // GIVEN
+        String password = "a";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
 
 
     @Test
@@ -147,6 +157,17 @@ class passwordValidationTest {
     void symbols_shouldReturnFalse(){
         // GIVEN
         String password = "!@#(";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_digits(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    };
+
+    @Test
+    void nullDigits_shouldReturnFalse(){
+        // GIVEN
+        String password = null;
         // WHE
         Boolean actual = passwordValidation.pwContains_digits(password);
         // THEN
@@ -224,6 +245,17 @@ class passwordValidationTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    void nullUpperLower_shouldReturnFalse(){
+        // GIVEN
+        String password = null;
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     // Tests for pwIs_commonlyUsed
 
@@ -246,6 +278,17 @@ class passwordValidationTest {
         Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
         // THEN
         Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void nullCommonlyUsed_shouldReturnFalse(){
+        // GIVEN
+        String password = null;
+        // WHE
+        Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
+        // THEN
+        Boolean expected = false;
         Assertions.assertEquals(expected, actual);
     }
 
