@@ -6,17 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class passwordValidationTest {
-
-//    @BeforeEach
-//        // -> Wird vor jedem Test ausgeführt
-//    void resetAllXY() {
-//        //Setze x & y wieder auf 0. Das macht jeden Test wieder erwartbar, da immer von x&y=0 ausgegangen wird.
-//        PlayerCharacter.x =0;
-//        PlayerCharacter.y =0;
-//    }
-
-// Tests for pwLength_min8
+class passwordValidationTest { s
 
     @Test
     void abcdefghj_shouldReturnTrue(){
@@ -132,7 +122,7 @@ class passwordValidationTest {
     @Test
     void a_shouldReturnFalse(){
             // GIVEN
-            String password = "abc";
+            String password = "a";
             // WHE
             Boolean actual = passwordValidation.pwContains_digits(password);
             // THEN
@@ -175,6 +165,66 @@ class passwordValidationTest {
         Boolean expected = true;
         Assertions.assertEquals(expected, actual);
     };
+
+// Tests for pwContains_lowerCaseUpperCase
+
+
+    @Test
+    void Torben_shouldReturnTrue(){
+        // GIVEN
+        String password = "Torben";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void torben_shouldReturnFalse(){
+        // GIVEN
+        String password = "torben";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void TORBEN_shouldReturnFalse(){
+        // GIVEN
+        String password = "TORBEN";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void t_shouldReturnFalse(){
+        // GIVEN
+        String password = "t";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void T_shouldReturnFalse(){
+        // GIVEN
+        String password = "T";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_LowerCaseUpperCase(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 
 
 
