@@ -248,5 +248,5 @@ class passwordValidationTest {
         Boolean expected = true;
         Assertions.assertEquals(expected, actual);
     }
-    
+
 }
