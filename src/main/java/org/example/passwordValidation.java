@@ -62,7 +62,7 @@ public class passwordValidation {
     // method to check if the password is commonly used: pwIs_commonlyUsed
 
     public static Boolean pwIs_commonlyUsed(String password) {
-        if (password == null || password.isEmpty()) return true;
+        if (password == null) return true;
         String lowerPassword = password.toLowerCase();
         String upperPassword = password.toUpperCase();
 
@@ -117,6 +117,23 @@ public class passwordValidation {
                 return true;
             }
         }
+        return false;
+    };
+
+    // method to check if the password contains special characters: pwContains_specialCharacters
+
+    public static Boolean pwContains_specialCharacters(String password) {
+        if (password == null) return false;
+        String[] specialCharacters = {
+                "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+",
+                "{", "}", "[", "]", ":", ";", "'", "\"", "<", ">", ",", ".", "?", "/",
+                "|", "\\", "~", "`"};
+
+        for (String specialChar : specialCharacters) {
+            if (password.contains(specialChar)) {
+                return true;
+            }
+        };
         return false;
     };
 

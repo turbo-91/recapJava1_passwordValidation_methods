@@ -325,4 +325,52 @@ class passwordValidationTest {
         Assertions.assertEquals(expected, actual);
     }
 
+// tests for pwContains_specialCharacters
+
+    @Test
+    void semicolon_shouldReturnTrue(){
+        // GIVEN
+        String password = ";";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_specialCharacters(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void specialCharacters_shouldReturnTrue(){
+        // GIVEN
+        String password = "!§=)(=)$/%";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_specialCharacters(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void numbers_shouldReturnFalse(){
+        // GIVEN
+        String password = "torben666";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_specialCharacters(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void space_shouldReturnFalse(){
+        // GIVEN
+        String password = "torben jost";
+        // WHE
+        Boolean actual = passwordValidation.pwContains_specialCharacters(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
 }
