@@ -163,7 +163,7 @@ class passwordValidationTest {
         Boolean expected = false;
         Assertions.assertEquals(expected, actual);
     };
-    
+
 
     @Test
     void spaceDigits_shouldReturnTrue(){
