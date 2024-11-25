@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class passwordValidationTest { s
+class passwordValidationTest {
 
     @Test
     void abcdefghj_shouldReturnTrue(){
@@ -225,11 +225,28 @@ class passwordValidationTest { s
     }
 
 
+    // Tests for pwIs_commonlyUsed
 
+    @Test
+    void safePassword_shouldReturnFalse(){
+        // GIVEN
+        String password = "&%gOdDeSs91!";
+        // WHE
+        Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
+        // THEN
+        Boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
 
-
-// Test: password empty
-    // Test: password null
-
+    @Test
+    void weakPassword_shouldReturnTrue(){
+        // GIVEN
+        String password = "666666";
+        // WHE
+        Boolean actual = passwordValidation.pwIs_commonlyUsed(password);
+        // THEN
+        Boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
