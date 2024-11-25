@@ -17,5 +17,5 @@ public class passwordValidation {
     // method to check if the password is commonlyUser: pwIs_commonlyUsed
 
 
-    
+
 }
