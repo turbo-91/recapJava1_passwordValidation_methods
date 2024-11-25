@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class passwordValidationTest { s
+class passwordValidationTest { 
 
     @Test
     void abcdefghj_shouldReturnTrue(){
